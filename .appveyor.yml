@@ -1,0 +1,30 @@
+
+platform:
+  - x64
+branches:
+  only:
+  - master
+clone_depth: 10
+environment:
+  global:
+    MSYSTEM: MSYS
+    MBASH: C:\msys64\usr\bin\sh -lc
+    PMOPTS: -S --needed --noconfirm --noprogressbar
+
+#cache:
+#  - '%APPVEYOR_BUILD_FOLDER%\msys64\var\cache\pacman\pkg'
+install:
+  - call %MBASH% "pacman -Syuu --noconfirm"
+  - call %MBASH% "pacman -Suu --noconfirm"
+  - call %MBASH% "pacman -Suu --noconfirm"
+  - call %MBASH% "echo Concurrent build count: $(($(nproc)+1))"
+  - call %MBASH% "mkdir -pv `cygpath -u ""$APPVEYOR_BUILD_FOLDER/msys2/pkg""`"
+  - call %MBASH% "echo 'PACKAGER=""Jeremy Tan <jtanx@outlook.com>""' >> /etc/makepkg.conf"
+  - call %MBASH% "echo 'PKGDEST=`cygpath -u ""$APPVEYOR_BUILD_FOLDER/msys2/pkg""`' >> /etc/makepkg.conf"
+build_script:
+  - call %MBASH% "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; ./build.sh"
+  - call %MBASH% "pacman -Sc --noconfirm"
+test: off
+artifacts:
+  - path: msys2\pkg\*.xz
+    name: msys2$(MBITS) q
