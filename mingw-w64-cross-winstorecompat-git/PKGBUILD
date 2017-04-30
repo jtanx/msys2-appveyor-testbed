@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="https://mingw-w64.sourceforge.io/"
 license=('custom')
 groups=("${_mingw_suff}-toolchain" "${_mingw_suff}")
-makedepends=("git" "${_mingw_suff}-gcc" "${_mingw_suff}-binutils" "${_mingw_suff}-crt" "${_mingw_suff}-headers")
+makedepends=("git" "${_mingw_suff}-gcc" "${_mingw_suff}-binutils" "${_mingw_suff}-crt-git" "${_mingw_suff}-headers")
 depends=("${_mingw_suff}-crt")
 optdepends=()
 backup=()
@@ -21,7 +21,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs' '!buildflags')
 source=("mingw-w64"::"git+https://git.code.sf.net/p/mingw-w64/mingw-w64")
 sha256sums=('SKIP')
 
-_targets="i686-w64-mingw32 x86_64-w64-mingw32 armv7-w64-mingw32"
+_targets="i686-w64-mingw32 x86_64-w64-mingw32 armv7-w32-mingw32ce"
 
 pkgver() {
   cd "${srcdir}/mingw-w64"
