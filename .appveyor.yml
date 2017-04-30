@@ -17,6 +17,7 @@ install:
   - call %MBASH% "pacman -Syuu --noconfirm"
   - call %MBASH% "pacman -Suu --noconfirm"
   - call %MBASH% "pacman -Suu --noconfirm"
+  - call %MBASH% "pacman -S --noconfirm mingw-w64-cross-crt-git"
   - call %MBASH% "echo Concurrent build count: $(($(nproc)+1))"
   - call %MBASH% "mkdir -pv `cygpath -u ""$APPVEYOR_BUILD_FOLDER/msys2/pkg""`"
   - call %MBASH% "echo 'PACKAGER=""Jeremy Tan <jtanx@outlook.com>""' >> /etc/makepkg.conf"
