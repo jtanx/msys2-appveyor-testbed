@@ -7,13 +7,14 @@ branches:
 clone_depth: 10
 environment:
   global:
-    MSYSTEM: MSYS
+    #MSYSTEM: MSYS
     MBASH: C:\msys64\usr\bin\sh -lc
     PMOPTS: -S --needed --noconfirm --noprogressbar
 
 #cache:
 #  - '%APPVEYOR_BUILD_FOLDER%\msys64\var\cache\pacman\pkg'
 install:
+  - call %MBASH% "which perl"
   - call %MBASH% "pacman -Syuu --noconfirm"
   - call %MBASH% "pacman -Suu --noconfirm"
   - call %MBASH% "pacman -Suu --noconfirm"
