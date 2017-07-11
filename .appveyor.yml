@@ -15,7 +15,7 @@ environment:
 #cache:
 #  - '%APPVEYOR_BUILD_FOLDER%\msys64\var\cache\pacman\pkg'
 install:
-  - reg query HKLM\SOFTWARE\Python\PythonCore\2.7\InstallPath
+  - reg query HKLM\SOFTWARE\Python\PythonCore
   - C:\msys64\usr\bin\bash --login -c "which perl; echo $MSYSTEM; echo $PATH"
   - call %MBASH% "which perl"
   - call %MBASH% "echo $MSYSTEM"
