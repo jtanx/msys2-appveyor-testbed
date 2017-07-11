@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="https://mingw-w64.sourceforge.io/"
 license=('custom')
 groups=("${_mingw_suff}-toolchain" "${_mingw_suff}")
-makedepends=("git" "${_mingw_suff}-gcc" "${_mingw_suff}-binutils" "${_mingw_suff}-crt" "${_mingw_suff}-headers")
+makedepends=("git" "${_mingw_suff}-gcc" "${_mingw_suff}-binutils" "${_mingw_suff}-crt" "${_mingw_suff}-headers mingw-w64-i686-cmake")
 depends=("${_mingw_suff}-crt")
 optdepends=()
 backup=()
@@ -32,6 +32,8 @@ pkgver() {
 }
 
 build() {
+  echo CMAKE
+  which cmake
   for _target in ${_targets}; do
     mkdir -p ${srcdir}/build-${_target} && cd ${srcdir}/build-${_target}
     ${srcdir}/mingw-w64/mingw-w64-libraries/winstorecompat/configure \
