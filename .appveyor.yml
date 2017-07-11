@@ -1,4 +1,5 @@
 
+clone_folder: C:\M
 platform:
   - x64
 branches:
