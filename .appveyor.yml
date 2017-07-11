@@ -15,6 +15,7 @@ environment:
 #  - '%APPVEYOR_BUILD_FOLDER%\msys64\var\cache\pacman\pkg'
 install:
   - call %MBASH% "which perl"
+  - call %MBASH% "echo $MSYSTEM"
   - call %MBASH% "pacman -Syuu --noconfirm"
   - call %MBASH% "pacman -Suu --noconfirm"
   - call %MBASH% "pacman -Suu --noconfirm"
